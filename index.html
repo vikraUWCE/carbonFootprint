@@ -1,0 +1,69 @@
+//Name: Saksham Vikram
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body type="number">
+    <!-- <h1>YOUR TOTAL CARBON FOOTPRINT:</h1> -->
+    <h2 id="carbonFootprint">Calculating your carbon footprint:</h2>
+    <h2 id="footprintResults">Finding your results:</h2>
+  </body>
+</html>
+
+<script>
+  let elec = prompt("Enter your montly electricity bill");
+  let gas = prompt("Enter your montly gas bill");
+  let oil = prompt("Enter your montly oil bill");
+  let carMileage = prompt("Enter your total yearly car mileage");
+  let flightsLess = prompt(
+    "Enter the number of flights you have taken in the past year (4 hours or less"
+  );
+  let flightsMore = prompt(
+    "Enter the number of flights you have taken in the past year (4 hours or more)"
+  );
+  let newspaper = prompt("Do you recycle newspaper (Yes/No)?");
+  let aluminiumTin = prompt("Do you recycle aluminium and tin (Yes/No)?");
+
+  let elecFoot = elec * 105;
+  let gasFoot = gas * 105;
+  let oilFoot = oil * 113;
+  let mileageFoot = carMileage * 0.79;
+  let flightsLessFoot = flightsLess * 1100;
+  let flightsMoreFoot = flightsMore * 4400;
+
+  let totalFootprint =
+    elecFoot +
+    gasFoot +
+    oilFoot +
+    mileageFoot +
+    flightsLessFoot +
+    flightsMoreFoot;
+
+  if (newspaper === "Yes") {
+    totalFootprint += 184;
+  }
+
+  if (aluminiumTin === "Yes") {
+    totalFootprint += 166;
+  }
+
+  console.log(totalFootprint);
+
+  document.getElementById("carbonFootprint").textContent =
+    "Your Total Carbon Footprint: " + totalFootprint;
+
+  if (totalFootprint >= 22000) {
+    document.getElementById("footprintResults").textContent =
+      "Oh No!! Your Carbon Footprint is WAY too high. Research ways to reduce it.";
+  } else if (totalFootprint <= 6000) {
+    document.getElementById("footprintResults").textContent =
+      "Wow! This is an ideal carbon footprint. Keep it up and tell others your ways.";
+  } else if (totalFootprint >= 6000 && totalFootprint <= 21000) {
+    document.getElementById("footprintResults").textContent =
+      "You have an average carbon footprint. Not ideal, so try to reduce as much as you can!";
+  }
+</script>
